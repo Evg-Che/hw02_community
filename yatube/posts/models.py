@@ -1,5 +1,4 @@
 from django.contrib.auth import get_user_model
-
 from django.db import models
 
 User = get_user_model()
@@ -25,7 +24,7 @@ class Group(models.Model):
 
 class Post(models.Model):
     text = models.TextField(
-        max_length=15,
+        max_length=200,
         verbose_name='Текст',
     )
     pub_date = models.DateTimeField(
@@ -47,4 +46,4 @@ class Post(models.Model):
     )
 
     def __str__(self):
-        return self.text
+        return self.text[:15]
