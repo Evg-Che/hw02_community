@@ -6,8 +6,15 @@
   <h2>{{group.title}}</h2>
   <p>{{group.description|linebreaks }}</p>
 {% for post in posts %}
-  {% include 'includes/post.html' %}
-  <p>{{ post.text|linebreaks }}</p>    
+  <ul>
+    <li>
+      Автор: {{ post.author.get_full_name }}       <!-- при выносе блока в includes - не проходят тесты -->
+    </li>
+    <li>
+      Дата публикации: {{ post.pub_date|date:'d E Y' }}
+    </li>
+  </ul>
+    <p>{{ post.text|linebreaks }}</p>    
   {% if not forloop.last %}<hr>{% endif %}
 {% endfor %}
 {% endblock %}
